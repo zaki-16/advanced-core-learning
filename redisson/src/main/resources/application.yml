@@ -1,0 +1,40 @@
+server:
+  port: 9102
+spring:
+  mvc:
+    static-path-pattern: /public
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/mytest?characterEncoding=utf-8&useSSL=false&allowMultiQueries=true
+    username: root
+    password: root
+    #    driver-class-name: com.mysql.jdbc.Driver
+    #    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 3000
+      pool-name: DatebookHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: redis
+    database: 3
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis.mapper/*Mapper.xml
+  type-aliases-package: com.zaki.redisson.pojo
+  #configuration:
+  #  map-underscore-to-camel-case: true
+
+logging:
+  level:
+    root: INFO
+    com.zaki.redisson: DEBUG
+    com.zaki.redisson.dao: DEBUG
+
+
