@@ -34,6 +34,7 @@ public class SemaphoreDemo {
         System.out.println("before");
         // release()返回一个许可给信号量
         semaphore.release();
+        System.out.println(semaphore.availablePermits());
         System.out.println("after");
     }
 

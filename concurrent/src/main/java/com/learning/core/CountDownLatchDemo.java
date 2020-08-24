@@ -11,18 +11,18 @@ public class CountDownLatchDemo {
         CountDownLatch countDownLatch = new CountDownLatch(3);
         for (int i = 0; i < 3; i++) {
             Thread thread = new Thread(new Runnable() {
+                @Override
                 public void run() {
                     System.out.println("running thread>" + Thread.currentThread().getName());
+
                 }
             });
             // 闭锁是一次性对象，一旦终止，就不能被重置
-            System.out.println(countDownLatch.getCount());
-            countDownLatch.countDown();
             thread.start();
+            countDownLatch.countDown();
         }
-        System.out.println("before");
+
         countDownLatch.await();
-        System.out.println("after");
     }
 
     public static void main(String[] args) throws Exception {
